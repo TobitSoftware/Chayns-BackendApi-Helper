@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{A58BF431-609B-4B21-9830-9EEE36557E1C}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Chayns.Backend</RootNamespace>
+    <AssemblyName>Chayns.Backend</AssemblyName>
+    <TargetFrameworkVersion>v4.6</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Local|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Local\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;__LOCAL__</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'QA|AnyCPU'">
+    <OutputPath>bin\QA\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <Optimize>true</Optimize>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Test|AnyCPU'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\Test\</OutputPath>
+    <DefineConstants>TRACE;DEBUG;__TEST__</DefineConstants>
+    <DebugType>full</DebugType>
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Api\Controller\Base\BaseApiController.cs" />
+    <Compile Include="Api\Controller\Base\IApiController.cs" />
+    <Compile Include="Api\Controller\EmailController.cs" />
+    <Compile Include="Api\Controller\IntercomController.cs" />
+    <Compile Include="Api\Controller\PushController.cs" />
+    <Compile Include="Api\Controller\DeviceController.cs" />
+    <Compile Include="Api\Helper\UrlParameterConverter.cs" />
+    <Compile Include="Api\Controller\LocationController.cs" />
+    <Compile Include="Api\Credentials\AccessTokenCredentials.cs" />
+    <Compile Include="Api\Credentials\Base\ICredentials.cs" />
+    <Compile Include="Api\Credentials\Credentials.cs" />
+    <Compile Include="Api\Credentials\SecretCredentials.cs" />
+    <Compile Include="Api\Models\Data\Base\DefaultData.cs" />
+    <Compile Include="Api\Models\Data\Base\IApiData.cs" />
+    <Compile Include="Api\Models\Data\ChangeableData.cs" />
+    <Compile Include="Api\Models\Data\Base\CommunicationBaseData.cs" />
+    <Compile Include="Api\Models\Data\DeviceDataGet.cs" />
+    <Compile Include="Api\Models\Data\EmailData.cs" />
+    <Compile Include="Api\Models\Data\IntercomData.cs" />
+    <Compile Include="Api\Models\Data\LocationIdentifier.cs" />
+    <Compile Include="Api\Models\Data\PageAccessTokenDataGet.cs" />
+    <Compile Include="Api\Models\Data\PushAction.cs" />
+    <Compile Include="Api\Models\Data\PushData.cs" />
+    <Compile Include="Api\Models\Data\UacGroupDataAdd.cs" />
+    <Compile Include="Api\Models\Data\UacGroupDataChange.cs" />
+    <Compile Include="Api\Models\Data\UacGroupDataGet.cs" />
+    <Compile Include="Api\Models\Data\UacGroupDataRemove.cs" />
+    <Compile Include="Api\Models\Data\UacMemberDataAdd.cs" />
+    <Compile Include="Api\Models\Data\UacMemberDataDelete.cs" />
+    <Compile Include="Api\Models\Data\UacMemberDataGet.cs" />
+    <Compile Include="Api\Models\Data\UserDataGet.cs" />
+    <Compile Include="Api\Models\Result\ApiAccessTokenInfoResult.cs" />
+    <Compile Include="Api\Models\Result\EmailResult.cs" />
+    <Compile Include="Api\Models\Result\IntercomResult.cs" />
+    <Compile Include="Api\Models\Result\PageAccessTokenInfoResult.cs" />
+    <Compile Include="Api\Models\Result\Base\ErrorResponse.cs" />
+    <Compile Include="Api\Models\Result\Base\IApiResult.cs" />
+    <Compile Include="Api\Models\Data\LocationDataGet.cs" />
+    <Compile Include="Api\Models\Result\DeviceResult.cs" />
+    <Compile Include="Api\Models\Result\LocationResult.cs" />
+    <Compile Include="Api\Models\Result\PageAccessTokenResult.cs" />
+    <Compile Include="Api\Models\Result\PushResult.cs" />
+    <Compile Include="Api\Models\Result\Result.cs" />
+    <Compile Include="Api\Models\Result\SingleResult.cs" />
+    <Compile Include="Api\Models\Result\Status.cs" />
+    <Compile Include="Api\Controller\AccessTokenController.cs" />
+    <Compile Include="Api\Controller\UacController.cs" />
+    <Compile Include="Api\Controller\UacMemberController.cs" />
+    <Compile Include="Api\Controller\UserController.cs" />
+    <Compile Include="Api\Controller\Base\WebApiCaller.cs" />
+    <Compile Include="Api\Models\Result\Base\TokenType.cs" />
+    <Compile Include="Api\Models\Result\UacGroupResult.cs" />
+    <Compile Include="Api\Models\Result\UacMemberResult.cs" />
+    <Compile Include="Api\Models\Result\UserAccessTokenInfoResult.cs" />
+    <Compile Include="Api\Models\Result\UserResult.cs" />
+    <Compile Include="Config.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Nuget.nuspec" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

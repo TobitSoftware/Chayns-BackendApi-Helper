@@ -1,0 +1,16 @@
+﻿<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>ChaynsBackendApi</id>
+    <version>2.0.0</version>
+    <authors>Tobit.Software</authors>
+    <owners>Tobit.Software</owners>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Library to use the ChaynsBackendApi in Version 2.0</description>
+    <releaseNotes>Update to Version 2.0</releaseNotes>
+    <copyright>Copyright 2017</copyright>
+    <dependencies>
+      <dependency id="Newtonsoft.Json" version="8.0.3" />
+    </dependencies>
+  </metadata>
+</package>
