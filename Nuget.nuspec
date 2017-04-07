@@ -13,4 +13,8 @@
       <dependency id="Newtonsoft.Json" version="8.0.3" />
     </dependencies>
   </metadata>
+  <files>
+    <file src="ChaynsBackendApiHelper\bin\Release\Chayns.Backend.dll" target="lib\net46\Chayns.Backend.dll" />
+    <file src="ChaynsBackendApiHelper\bin\Release\Chayns.Backend.XML" target="lib\net46\Chayns.Backend.XML" />
+  </files>
 </package>
