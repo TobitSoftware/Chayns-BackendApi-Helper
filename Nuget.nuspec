@@ -1,7 +1,7 @@
-﻿<?xml version="1.0"?>
+<?xml version="1.0"?>
 <package >
   <metadata>
-    <id>ChaynsBackendApi</id>
+    <id>ChaynsBackendApiHelper</id>
     <version>2.0.0</version>
     <authors>Tobit.Software</authors>
     <owners>Tobit.Software</owners>
