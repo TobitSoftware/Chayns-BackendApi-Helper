@@ -103,6 +103,7 @@
     <Compile Include="Api\Models\Data\UacMemberDataAdd.cs" />
     <Compile Include="Api\Models\Data\UacMemberDataDelete.cs" />
     <Compile Include="Api\Models\Data\UacMemberDataGet.cs" />
+    <Compile Include="Api\Models\Data\UserAccessTokenDataGet.cs" />
     <Compile Include="Api\Models\Data\UserDataGet.cs" />
     <Compile Include="Api\Models\Result\ApiAccessTokenInfoResult.cs" />
     <Compile Include="Api\Models\Result\EmailResult.cs" />

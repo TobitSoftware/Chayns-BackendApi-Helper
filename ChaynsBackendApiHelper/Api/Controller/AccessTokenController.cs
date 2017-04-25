@@ -19,10 +19,10 @@ namespace Chayns.Backend.Api.Controller
     {
         private readonly ConcurrentDictionary<string, ICredentials> _credentials = new ConcurrentDictionary<string, ICredentials>();
 
-        private WebApiCaller<PageAccessTokenInfoResult> _privPageCaller = null;
-        private WebApiCaller<UserAccessTokenInfoResult> _privUserCaller = null;
-        private WebApiCaller<ApiAccessTokenInfoResult> _privApiCaller = null;
-        private WebApiCaller<PageAccessTokenResult> _privPagePostCaller = null;
+        private WebApiCaller<PageAccessTokenInfoResult> _privPageCaller;
+        private WebApiCaller<UserAccessTokenInfoResult> _privUserCaller;
+        private WebApiCaller<ApiAccessTokenInfoResult> _privApiCaller;
+        private WebApiCaller<PageAccessTokenResult> _privPagePostCaller;
         private WebApiCaller<PageAccessTokenInfoResult> PageCaller => _privPageCaller ?? (_privPageCaller = new WebApiCaller<PageAccessTokenInfoResult>());
         private WebApiCaller<UserAccessTokenInfoResult> UserCaller => _privUserCaller ?? (_privUserCaller = new WebApiCaller<UserAccessTokenInfoResult>());
         private WebApiCaller<ApiAccessTokenInfoResult> ApiCaller => _privApiCaller ?? (_privApiCaller = new WebApiCaller<ApiAccessTokenInfoResult>());
@@ -59,26 +59,26 @@ namespace Chayns.Backend.Api.Controller
         /// Validates UserAccessToken async
         /// </summary>
         /// <param name="credentials">UserAccessToken to validate</param>
-        /// <param name="req">Identifies the location</param>
+        /// <param name="data"></param>
         /// <returns>Info about given UserAccessToken</returns>
-        public async Task<SingleResult<UserAccessTokenInfoResult>> GetUserAccessTokenInfoAsync(LocationIdentifier req, AccessTokenCredentials credentials)
+        public async Task<SingleResult<UserAccessTokenInfoResult>> GetUserAccessTokenInfoAsync(AccessTokenCredentials credentials, UserAccessTokenDataGet data)
         {
             Guid id = Guid.NewGuid();
             _credentials.TryAdd("GetUserAccessTokenInfoAsync" + id, credentials);
-            return await UserCaller.CallApiAsync<DefaultData>(req, this, HttpMethod.Get, callingFunction: "GetUserAccessTokenInfoAsync" + id);
+            return await UserCaller.CallApiAsync<DefaultData>(data, this, HttpMethod.Get, callingFunction: "GetUserAccessTokenInfoAsync" + id);
         }
 
         /// <summary>
         /// Validates UserAccessToken
         /// </summary>
         /// <param name="credentials">UserAccessToken to validate</param>
-        /// <param name="req">Identifies the location</param>
+        /// <param name="data"></param>
         /// <returns>Info about given UserAccessToken</returns>
-        public SingleResult<UserAccessTokenInfoResult> GetUserAccessTokenInfo(LocationIdentifier req, AccessTokenCredentials credentials)
+        public SingleResult<UserAccessTokenInfoResult> GetUserAccessTokenInfo(AccessTokenCredentials credentials, UserAccessTokenDataGet data)
         {
             Guid id = Guid.NewGuid();
             _credentials.TryAdd("GetUserAccessTokenInfo" + id, credentials);
-            return UserCaller.CallApi<DefaultData>(req, this, HttpMethod.Get, callingFunction: "GetUserAccessTokenInfo" + id);
+            return UserCaller.CallApi<DefaultData>(data, this, HttpMethod.Get, callingFunction: "GetUserAccessTokenInfo" + id);
         }
 
         /// <summary>
