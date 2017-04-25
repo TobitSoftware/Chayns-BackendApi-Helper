@@ -139,6 +139,17 @@
     <Compile Include="Api\Models\Result\UserAccessTokenInfoResult.cs" />
     <Compile Include="Api\Models\Result\UserResult.cs" />
     <Compile Include="Config.cs" />
+    <Compile Include="Extensions\ActionResult\AddChallengeOnUnauthorizedResult.cs" />
+    <Compile Include="Extensions\ActionResult\AuthenticationFailureResult.cs" />
+    <Compile Include="Extensions\AuthenticationAndAuthorization\ChaynsUserIdenty.cs" />
+    <Compile Include="Extensions\AuthenticationAndAuthorization\TobitAccessToken.cs" />
+    <Compile Include="Extensions\Filter\TobitAccessTokenAuthentication.cs" />
+    <Compile Include="Extensions\Helper\IdentityHelper.cs" />
+    <Compile Include="Extensions\Helper\JwtHelper.cs" />
+    <Compile Include="Extensions\Models\Error.cs" />
+    <Compile Include="Extensions\Models\Interfaces\IChaynsIdentity.cs" />
+    <Compile Include="Extensions\Models\Response\ErrorResponse.cs" />
+    <Compile Include="Extensions\Models\UserAccessTokenPayload.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
