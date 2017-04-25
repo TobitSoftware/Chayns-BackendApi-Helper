@@ -1,7 +1,7 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.ComponentModel;
-using System.Reflection;
-using System.Web;
 using Chayns.Backend.Api.Models.Data;
 
 namespace Chayns.Backend.Api.Helper
@@ -14,6 +14,7 @@ namespace Chayns.Backend.Api.Helper
         /// <typeparam name="TData">Datatype of the serializeable object</typeparam>
         /// <param name="data">Object to serialize</param>
         /// <returns>Url-parameters</returns>
+
         public static string SerializeObject<TData>(TData data) where TData : ChangeableData
         {
             HashSet<string> changedProperties;
@@ -21,29 +22,55 @@ namespace Chayns.Backend.Api.Helper
             {
                 return "";
             }
-
-            List<string> parameter = new List<string>();
+            var baseType = data.GetType();
+            var parameters = new List<string>();
             foreach (var propName in changedProperties)
             {
-                PropertyInfo prop = typeof (TData).GetProperty(propName);
-                object val = prop.GetValue(data);
+                var valStr = "";
+                var converter = new StringConverter();
 
-                StringConverter converter = new StringConverter();
-                if (converter.CanConvertFrom(prop.GetType()))
+                var prop = baseType.GetProperty(propName);
+
+                var val = prop.GetValue(data);
+                
+                if (val is IEnumerable && !(val is string))
                 {
-                    string valStr = converter.ConvertFrom(val)?.ToString() ?? "";
-                    valStr = HttpUtility.UrlEncode(valStr);
-                    parameter.Add($"{propName}={valStr}");
+                    var arrEntries = prop.GetValue(data) as IEnumerable;
+                    if (arrEntries != null)
+                    {
+                        foreach (var arrEntry in arrEntries)
+                        {
+                            string valToAdd;
+                            if (converter.CanConvertFrom(prop.GetType()))
+                            {
+                                valToAdd = converter.ConvertFrom(arrEntry)?.ToString() ?? "";
+                            }
+                            else
+                            {
+                                valToAdd = arrEntry?.ToString() ?? "";
+                            }
+
+                            if (valToAdd != "") valStr += $"{valToAdd},";
+                        }
+                        valStr = $"[{valStr.Remove(valStr.LastIndexOf(','), 1)}]";
+                    }
                 }
                 else
                 {
-                    string valStr = val?.ToString() ?? "";
-                    valStr = HttpUtility.UrlEncode(valStr);
-                    parameter.Add($"{propName}={valStr}");
+                    if (converter.CanConvertFrom(prop.GetType()))
+                    {
+                        valStr = converter.ConvertFrom(val)?.ToString() ?? "";
+                    }
+                    else
+                    {
+                        valStr = val?.ToString() ?? "";
+                    }
                 }
 
+                if (valStr != "") parameters.Add($"{propName}={valStr}");
             }
-            return "?" + string.Join("&", parameter);
+            if (parameters.Count == 0) return "";
+            return "?" + string.Join("&", parameters);
         }
     }
 }
