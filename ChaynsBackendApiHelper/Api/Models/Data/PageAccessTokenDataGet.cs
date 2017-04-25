@@ -44,14 +44,5 @@ namespace Chayns.Backend.Api.Models.Data
             }
         }
         #endregion Name
-
-        /// <summary>
-        /// Gets the location identifier (LocationId or SiteId)
-        /// </summary>
-        /// <returns>LocationId or SiteId</returns>
-        public string GetLocationIdentifier()
-        {
-            return null;
-        }
     }
 }
