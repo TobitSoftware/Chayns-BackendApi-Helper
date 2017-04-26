@@ -13,6 +13,23 @@ namespace Chayns.Backend.Api.Models.Data
         {
         }
 
+        #region ThreadName
+
+        private string _threadName;
+
+        [Newtonsoft.Json.JsonProperty(PropertyName = "ThreadName")]
+        public string ThreadName
+        {
+            get { return _threadName; }
+            set
+            {
+                _threadName = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
         #region UseGroupChat
 
         private bool _useGroupChat;
@@ -44,6 +61,7 @@ namespace Chayns.Backend.Api.Models.Data
         }
 
         #endregion ReceiverLocationIds
+
         #region Message
 
         private string _message;
@@ -61,6 +79,8 @@ namespace Chayns.Backend.Api.Models.Data
 
         #endregion Message
 
+        #region UserAccessToken
+
         private string _userAccessToken;
 
         [Newtonsoft.Json.JsonProperty(PropertyName = "UserAccessToken")]
@@ -69,9 +89,11 @@ namespace Chayns.Backend.Api.Models.Data
             get { return _userAccessToken; }
             set
             {
-                _userAccessToken = value; 
+                _userAccessToken = value;
                 OnPropertyChanged();
             }
         }
+
+        #endregion
     }
 }
