@@ -16,7 +16,7 @@ namespace Chayns.Backend.Extensions.AuthenticationAndAuthorization
     /// </summary>
     public class ChaynsUserIdenty : IChaynsIdentity
     {
-        public ChaynsUserIdenty(string tobitAccessToken, IEnumerable<int>  requieredUacGroups = null)
+        public ChaynsUserIdenty(string tobitAccessToken, IEnumerable<int>  requiredUacGroups = null)
         {
             AccessToken = tobitAccessToken;
             var tokenPayload = JwtHelper.GetPayload<UserAccessTokenPayload>(AccessToken);
@@ -35,7 +35,7 @@ namespace Chayns.Backend.Extensions.AuthenticationAndAuthorization
 
             var tokenController = new AccessTokenController();
             var tokenCredentials = new AccessTokenCredentials(AccessToken);
-            var dataGet = new UserAccessTokenDataGet(tokenPayload.LocationId, requieredUacGroups?.ToArray());
+            var dataGet = new UserAccessTokenDataGet(tokenPayload.LocationId, requiredUacGroups?.ToArray());
 
             var result = tokenController.GetUserAccessTokenInfo(tokenCredentials, dataGet);
 

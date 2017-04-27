@@ -10,9 +10,9 @@ namespace Chayns.Backend.Extensions.AuthenticationAndAuthorization
     {
         private readonly ChaynsUserIdenty _chaynsUser;
 
-        public TobitAccessToken(string tobitAccessToken, IEnumerable<int> requieredUacGroups = null)
+        public TobitAccessToken(string tobitAccessToken, IEnumerable<int> requiredUacGroups = null)
         {
-            _chaynsUser = new ChaynsUserIdenty(tobitAccessToken, requieredUacGroups);
+            _chaynsUser = new ChaynsUserIdenty(tobitAccessToken, requiredUacGroups);
         }
 
         public IIdentity Identity => _chaynsUser;

@@ -5,32 +5,32 @@ namespace Chayns.Backend.Api.Models.Data
 {
     public class UserAccessTokenDataGet : DefaultData
     {
-        public UserAccessTokenDataGet(int locationId, params int[] requieredUacGroups) : base(locationId)
+        public UserAccessTokenDataGet(int locationId, params int[] requiredUacGroups) : base(locationId)
         {
-            if (requieredUacGroups != null && requieredUacGroups.Length > 0)
+            if (requiredUacGroups != null && requiredUacGroups.Length > 0)
             {
-                RequieredUacGroups = requieredUacGroups.ToArray();
+                RequiredUacGroups = requiredUacGroups.ToArray();
             }
         }
 
-        public UserAccessTokenDataGet(string siteId, params int[] requieredUacGroups) : base(siteId)
+        public UserAccessTokenDataGet(string siteId, params int[] requiredUacGroups) : base(siteId)
         {
-            if (requieredUacGroups != null && requieredUacGroups.Length > 0)
+            if (requiredUacGroups != null && requiredUacGroups.Length > 0)
             {
-                RequieredUacGroups = requieredUacGroups.ToArray();
+                RequiredUacGroups = requiredUacGroups.ToArray();
             }
         }
 
-        #region RequieredUacGroups
+        #region RequiredUacGroups
 
-        private int[] _requieredUacGroups;
+        private int[] _requiredUacGroups;
 
-        public int[] RequieredUacGroups
+        public int[] RequiredUacGroups
         {
-            get { return _requieredUacGroups; }
+            get { return _requiredUacGroups; }
             set
             {
-                _requieredUacGroups = value;
+                _requiredUacGroups = value;
                 OnPropertyChanged();
             }
         }

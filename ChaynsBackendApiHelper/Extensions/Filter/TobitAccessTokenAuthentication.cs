@@ -20,15 +20,15 @@ namespace Chayns.Backend.Extensions.Filter
         public bool Optional = false;
 
         /// <summary>
-        /// Definies the UAC groups wich are allowed to 
+        /// Definies the UAC groups wich are allowed to execute the request
         /// </summary>
-        public string RequieredUacGroups
+        public string RequiredUacGroups
         {
-            get { return $"{string.Join(",", _requieredUacGroupsList)}"; }
-            set { _requieredUacGroupsList = Array.ConvertAll(value.Split(','), int.Parse).ToList(); }
+            get { return $"{string.Join(",", _requiredUacGroupsList)}"; }
+            set { _requiredUacGroupsList = Array.ConvertAll(value.Split(','), int.Parse).ToList(); }
         }
 
-        private IEnumerable<int> _requieredUacGroupsList;
+        private IEnumerable<int> _requiredUacGroupsList;
 
         public override bool AllowMultiple => false;
 
@@ -63,7 +63,7 @@ namespace Chayns.Backend.Extensions.Filter
                 return;
             }
 
-            var principal = Authenticate(authorization.Parameter, _requieredUacGroupsList);
+            var principal = Authenticate(authorization.Parameter, _requiredUacGroupsList);
 
             if (principal == null)
             {
