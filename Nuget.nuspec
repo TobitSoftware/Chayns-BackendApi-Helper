@@ -8,8 +8,7 @@
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>Library to use the ChaynsBackendApi in Version 2.0</description>
     <releaseNotes>Update to Version 2.0</releaseNotes>
-    <description>The chayns backend api helper is dedicated to support you using the backend api itself. 
-It shortens and simplifies many features of the api and makes the usage much more cleaned up.</description>
+    <description>The chayns backend api helper is dedicated to support you using the backend api itself. It shortens and simplifies many features of the api and makes the usage much more cleaned up.</description>
     <summary>Helper for the chayns backend api to shorten and simplify many api features</summary>
     <copyright>Copyright (c) 2017 Tobit.Software AG</copyright>
     <licenseUrl>http://tapp01.tobit.com/content/mit_license.txt</licenseUrl>
