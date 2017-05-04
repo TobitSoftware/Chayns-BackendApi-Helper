@@ -1,12 +1,11 @@
 <?xml version="1.0"?>
-<package >
+<package xmlns="http://schemas.microsoft.com/packaging/2013/05/nuspec.xsd">
   <metadata>
     <id>ChaynsBackendApiHelper</id>
     <version>2.0.30</version>
     <authors>Tobit.Software AG</authors>
     <owners>Tobit.Software AG</owners>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
-    <description>Library to use the ChaynsBackendApi in Version 2.0</description>
     <releaseNotes>Update to Version 2.0</releaseNotes>
     <description>The chayns backend api helper is dedicated to support you using the backend api itself. It shortens and simplifies many features of the api and makes the usage much more cleaned up.</description>
     <summary>Helper for the chayns backend api to shorten and simplify many api features</summary>
