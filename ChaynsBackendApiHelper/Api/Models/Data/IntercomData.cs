@@ -30,6 +30,23 @@ namespace Chayns.Backend.Api.Models.Data
 
         #endregion
 
+        #region SendAsSystemMessage
+
+        private bool _sendAsSystemMessage;
+
+        [Newtonsoft.Json.JsonProperty(PropertyName = "SendAsSystemMessage")]
+        public bool SendAsSystemMessage
+        {
+            get { return _sendAsSystemMessage; }
+            set
+            {
+                _sendAsSystemMessage = value;
+                OnPropertyChanged();
+            }
+        }
+
+        #endregion
+
         #region UseGroupChat
 
         private bool _useGroupChat;
