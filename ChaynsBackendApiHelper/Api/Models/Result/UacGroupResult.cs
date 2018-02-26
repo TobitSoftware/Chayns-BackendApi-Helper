@@ -7,6 +7,7 @@ namespace Chayns.Backend.Api.Models.Result
         public int UserGroupId { get; set; }
         public string ShowName { get; set; }
         public string Name { get; set; }
+        public string Description { get; set; }
         public int? TappId { get; set; }
         public int CountMember { get; set; }
     }
