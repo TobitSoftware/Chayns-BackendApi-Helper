@@ -140,13 +140,18 @@ namespace Chayns.Backend.Api.Controller.Base
         private Status GetStatus(WebException wex)
         {
             Status status;
-            if (wex != null)
+            if (wex?.Response != null)
             {
                 HttpWebResponse resp = (HttpWebResponse)wex.Response;
+                if (resp == null)
+                {
+                    status = new Status(503);
+                    return status;
+                }
                 try
                 {
                     string errorResponse;
-                    // ReSharper disable once AssignNullToNotNullAttribute
+                    // ReSharper disable once AssignNullToNotNullAttribute 
                     using (var reader = new StreamReader(resp.GetResponseStream(), Encoding.UTF8))
                     {
                         errorResponse = reader.ReadToEnd();
@@ -158,11 +163,10 @@ namespace Chayns.Backend.Api.Controller.Base
                 {
                     status = new Status((int)resp.StatusCode, Guid.Empty, resp.StatusDescription);
                 }
-               
             }
             else
             {
-                status = new Status(200);
+                status = new Status(503);
             }
 
             return status;
